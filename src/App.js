@@ -3,6 +3,7 @@ import styled from "styled-components";
 import vibrate from "./lib/vibrate";
 import Compass from "./components/compass";
 import Departments from "./components/departments";
+import SideMenu from "./components/sideMenu";
 import testData from "./testData.json";
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
 
   return (
     <>
+      <SideMenu />
     
       {
          isError &&  <ErrorMessage>🔴 PLEASE TURN GPS ON  AND REFRESH</ErrorMessage>
