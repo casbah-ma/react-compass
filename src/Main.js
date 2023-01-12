@@ -41,15 +41,22 @@ function App() {
 
   return (
     <>
+      {
+        selectedLocation &&  <SideMenu showMap={showMap} setShowMap={ setShowMap } />
+      }
+
+      {
+        !selectedLocation && <h1>Missing arguments</h1>
+      }
      
-      <SideMenu showMap={showMap} setShowMap={ setShowMap } />
+     
     
       {
          isError &&  <ErrorMessage>🔴 PLEASE TURN GPS ON  AND REFRESH</ErrorMessage>
      }
      
       {
-        !showMap && <CompassContainer keepAhead={keepAhead}>
+        !showMap && selectedLocation && <CompassContainer keepAhead={keepAhead}>
         {
           destination?.latitude && 
           <Compass setIsError={setIsError}
