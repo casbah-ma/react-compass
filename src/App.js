@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import styled from "styled-components";
+import vibrate from "./lib/vibrate";
 import Compass from "./components/compass";
 import Departments from "./components/departments";
 import testData from "./testData.json";
@@ -16,6 +17,7 @@ function App() {
 
   function handleChangeLocation(index) {
     setDestination(departmentsData[index]);
+    vibrate({ duration: 200, interval: 150, count:1})
   }
 
   return (
