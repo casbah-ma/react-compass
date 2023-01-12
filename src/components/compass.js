@@ -28,7 +28,7 @@ function Compass({ latitude, longitude, setIsError, setKeepAhead }) {
           }
         );
         setPlaceUserHeading(
-          Math.abs(180 - Math.abs(compassHeading - placeUserBearing))
+          Math.abs(180 - (compassHeading - placeUserBearing))
         );
 
         setDistance(
