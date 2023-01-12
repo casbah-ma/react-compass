@@ -74,7 +74,8 @@ function Compass({ latitude, longitude, setIsError, setKeepAhead }) {
               alt="arrow"
             />
           </CompassContainer>
-          <Distance keepAhead={cardinal === "keep_ahead"}>{distance} m</Distance>
+          <Distance keepAhead={cardinal === "keep_ahead"}>{distance} m </Distance>
+          <Distance keepAhead={cardinal === "keep_ahead"}>／/ ┊ \＼</Distance>
         </>
       }
     </Container>
