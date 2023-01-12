@@ -1,0 +1,151 @@
+{
+  "location": {
+    "name": "Test Location",
+    "loc": [-75.70881526776208, 45.472177450000004],
+    "address": "40 rue de l'erabliere",
+    "city": "gatineau",
+    "country": "Canada",
+    "slug": "test-location",
+    "logo": "https://concierge.fra1.digitaloceanspaces.com/3d8d8f37-4674-40b9-9aa9-ed56a3452222.png",
+    "locales": ["ar", "en"],
+    "fidelityCurrency": "USD",
+    "fidelityUnit": 1000
+  },
+  "categories": [
+    {
+      "_id": "638d349011914ddaf91f0370",
+      "name": "test",
+      "description": "test",
+      "parent": null,
+      "media": [],
+      "dictionary": {
+        "name": {},
+        "description": {},
+        "tagOne": {},
+        "tagTwo": {},
+        "tagThree": {}
+      },
+      "slug": "test",
+      "openingHours": []
+    },
+    {
+      "_id": "63974593a4acaeaf895545c0",
+      "name": "test3",
+      "parent": null,
+      "media": [],
+      "dictionary": {
+        "name": {},
+        "description": {},
+        "tagOne": {},
+        "tagTwo": {},
+        "tagThree": {}
+      },
+      "slug": "test3",
+      "openingHours": []
+    },
+    {
+      "_id": "6397459aa4acaeaf895545c8",
+      "name": "test4",
+      "parent": null,
+      "media": [],
+      "dictionary": {
+        "name": {},
+        "description": {},
+        "tagOne": {},
+        "tagTwo": {},
+        "tagThree": {}
+      },
+      "slug": "test4",
+      "openingHours": []
+    },
+    {
+      "_id": "639745a2a4acaeaf895545d0",
+      "name": "test5",
+      "parent": null,
+      "media": [],
+      "dictionary": {
+        "name": {},
+        "description": {},
+        "tagOne": {},
+        "tagTwo": {},
+        "tagThree": {}
+      },
+      "slug": "test5",
+      "openingHours": []
+    },
+    {
+      "_id": "63974dfca4acaeaf89554636",
+      "name": "test6",
+      "parent": null,
+      "media": [
+        {
+          "location": "https://concierge.fra1.digitaloceanspaces.com/2f61f00a-c428-4efc-a72b-5a0daef32616.png",
+          "mimetype": "image/png",
+          "filename": "2f61f00a-c428-4efc-a72b-5a0daef32616.png"
+        }
+      ],
+      "dictionary": {
+        "name": {},
+        "description": {},
+        "tagOne": {},
+        "tagTwo": {},
+        "tagThree": {}
+      },
+      "slug": "test6",
+      "openingHours": []
+    }
+  ],
+  "documents": [
+    {
+      "_id": "63a3172abf460a9146594368",
+      "name": "tyrtrtert",
+      "passive": false,
+      "media": [],
+      "document": [
+        {
+          "location": "https://fra1.digitaloceanspaces.com/concierge/c8b28e4f-590c-4410-97c7-909c6889fbc8.pdf",
+          "mimetype": "application/pdf",
+          "filename": "c8b28e4f-590c-4410-97c7-909c6889fbc8.pdf"
+        }
+      ],
+      "dictionary": { "name": {}, "description": {} }
+    }
+  ],
+  "screenSaver": [
+    {
+      "_id": "63a092fdbf460a91465914a7",
+      "name": "test",
+      "description": "test",
+      "passive": true,
+      "media": [
+        {
+          "location": "https://concierge.fra1.digitaloceanspaces.com/2f61f00a-c428-4efc-a72b-5a0daef32616.png",
+          "mimetype": "image/png",
+          "filename": "2f61f00a-c428-4efc-a72b-5a0daef32616.png"
+        }
+      ],
+      "document": [
+        {
+          "location": "https://concierge.fra1.digitaloceanspaces.com/60aa8251-a719-4194-8df5-af5a69db9403.jpg",
+          "mimetype": "image/jpeg",
+          "filename": "60aa8251-a719-4194-8df5-af5a69db9403.jpg"
+        }
+      ],
+      "dictionary": { "name": {}, "description": {} }
+    }
+  ],
+  "departments": [
+    { 
+        "name": "department a", 
+    "latitude": 45.4724569, 
+    "longitude": -75.7077819,
+    "icon": "icon_name"
+},
+    {
+      "name": "departement b",
+      "latitude": 35.2321221,
+      "longitude": -5.36232565,
+      "icon": "icon_name"
+    }
+  ]
+}

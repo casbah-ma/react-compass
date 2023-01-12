@@ -1,12 +1,13 @@
 import { useState, useEffect, useMemo } from "react";
 import { getRhumbLineBearing, getDistance } from "geolib";
+import styled from "styled-components";
 import getCardinal from "../lib/getCardinal";
 import useCompassHeading from "../hooks/useCompassHeading";
 import { useWatchPosition } from "../hooks/useWatchPosition";
 import arrowwhite from "../medias/arrow-white.png";
 import arrowgreen from "../medias/arrow-green.png";
 
-function Compass({ latitude, longitude, title }) {
+function Compass({ latitude, longitude, setIsError, setKeepAhead }) {
   const [compassHeading, compassError] = useCompassHeading();
   const [userPosition, positionError] = useWatchPosition();
   const [placeUserHeading, setPlaceUserHeading] = useState(false);
@@ -29,7 +30,7 @@ function Compass({ latitude, longitude, title }) {
         setPlaceUserHeading(
           Math.abs(180 - Math.abs(compassHeading - placeUserBearing))
         );
-  
+
         setDistance(
           getDistance(
             { latitude, longitude },
@@ -39,12 +40,14 @@ function Compass({ latitude, longitude, title }) {
             }
           )
         );
+        setIsError(false);
+      } else {
+        setIsError(true);
       }
     } catch (error) {
-      
+      setIsError(true);
     }
-
-  }, [latitude, longitude, userPosition, compassHeading]);
+  }, [latitude, longitude, userPosition, compassHeading, setIsError]);
 
   useEffect(() => {
     if (compassError) {
@@ -55,28 +58,42 @@ function Compass({ latitude, longitude, title }) {
     }
   }, [compassError, positionError]);
 
-  return (
-    <div className="compass">
-      <div className="title">
-        <h4>{title}</h4>
-        <h4>{positionError ? 'Please Enable GPS' : null}</h4>
-        <h4>{distance} m</h4>
-        <h4>{cardinal}</h4>
-        <h4>{compassError}</h4>
-     
-        <h4>{placeUserHeading}deg</h4>
-        <h4>{JSON.stringify(userPosition)}</h4>
-      </div>
+  useEffect(() => {
+    setKeepAhead(cardinal === "keep_ahead");
+  }, [cardinal, setKeepAhead]);
 
-      <div className="arrow">
-        <img
-          src={cardinal === "keep_ahead" ? arrowgreen : arrowwhite}
-          alt="arrow"
-          style={{ transform: "rotate(" + placeUserHeading + "deg)" }}
-        />
-      </div>
-    </div>
+  return (
+    <Container>
+      {
+        <>
+          <CompassContainer
+            style={{ transform: "rotate(" + placeUserHeading + "deg)" }}
+          >
+            <img
+              src={cardinal === "keep_ahead" ? arrowgreen : arrowwhite}
+              alt="arrow"
+            />
+          </CompassContainer>
+          <Distance keepAhead={cardinal === "keep_ahead"}>{distance} m</Distance>
+        </>
+      }
+    </Container>
   );
 }
 
 export default Compass;
+
+const Container = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+`;
+
+const Distance = styled.div`
+ color: ${p=>p.keepAhead ? 'white' : 'black'};
+
+`;
+
+const CompassContainer = styled.div``;
