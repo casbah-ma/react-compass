@@ -4,9 +4,11 @@ import vibrate from "./lib/vibrate";
 import Compass from "./components/compass";
 import Departments from "./components/departments";
 import SideMenu from "./components/sideMenu";
+import MapComponent from "./components/map";
 import testData from "./testData.json";
 
 function App() {
+  const [showMap, setShowMap] = useState(false)
   const [destination, setDestination] = useState(null);
   const [isError, setIsError] = useState(false)
   const [keepAhead, setKeepAhead] = useState(false)
@@ -23,13 +25,14 @@ function App() {
 
   return (
     <>
-      <SideMenu />
+      <SideMenu showMap={showMap} setShowMap={ setShowMap } />
     
       {
          isError &&  <ErrorMessage>🔴 PLEASE TURN GPS ON  AND REFRESH</ErrorMessage>
      }
      
-      <CompassContainer keepAhead={keepAhead}>
+      {
+        !showMap && <CompassContainer keepAhead={keepAhead}>
         {
           destination?.latitude && 
           <Compass setIsError={setIsError}
@@ -40,10 +43,19 @@ function App() {
         }
        
       </CompassContainer>
+      }
+
+   
+      
       <DepartmentsContainer>
         <Label>Slide to Select Destination</Label>
         <Departments slides={departmentsData} onChange={handleChangeLocation} />
       </DepartmentsContainer>
+
+      {
+        showMap && <MapComponent latitude={ destination?.latitude } longitude={destination?.longitude } />
+      }
+
   
     </>
   );
@@ -61,6 +73,7 @@ const CompassContainer = styled.div`
 
 const DepartmentsContainer = styled.div`
   position: fixed;
+      z-index:9999 ;
   bottom: 0px;
   left: 20px;
   height: 90px;

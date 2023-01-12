@@ -93,7 +93,8 @@ const Container = styled.div`
 `;
 
 const Distance = styled.div`
- color: ${p=>p.keepAhead ? 'white' : 'black'};
+ color: ${p => p.keepAhead ? 'white' : 'black'};
+ font-size: 20px;
 
 `;
 
