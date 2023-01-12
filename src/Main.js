@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import styled from "styled-components";
 import { useQuery  } from "react-query";
 import vibrate from "./lib/vibrate";
@@ -7,18 +7,21 @@ import Departments from "./components/departments";
 import SideMenu from "./components/sideMenu";
 import MapComponent from "./components/map";
 import { getDepartments } from "./services/getDepartments";
-const SELECTED_LOCATION = "634354cedf520720c9a305d6"
 
 function App() {
   const [showMap, setShowMap] = useState(false)
   const [destination, setDestination] = useState(null);
   const [isError, setIsError] = useState(false)
   const [keepAhead, setKeepAhead] = useState(false)
+  const selectedLocation = useMemo(() => {
+    const path = window?.location?.pathname
+    return path.replace('/','')
+  }, [])
 
 
-  const departmentList = useQuery(SELECTED_LOCATION, () =>
+  const departmentList = useQuery(selectedLocation, () =>
   getDepartments({
-    placeId: SELECTED_LOCATION
+    placeId: selectedLocation
   })
   );
 
